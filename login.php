@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Meu Real</title>
+    <style>
+        :root {
+            --primary: #10b981;
+            /* Verde do seu Dashboard */
+            --dark: #064e3b;
+            /* Verde escuro da sua Sidebar */
+            --bg: #f1f5f9;
+            /* Cinza claro do fundo do site */
+            --text: #1e293b;
+        }
+
+        body {
+            background: var(--bg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 380px;
+        }
+
+        .brand-header {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .brand-header i {
+            color: var(--primary);
+            font-size: 40px;
+            margin-bottom: 10px;
+        }
+
+        .brand-header h2 {
+            color: var(--dark);
+            margin: 0;
+            font-size: 24px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--dark);
+            margin-bottom: 5px;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #cbd5e1;
+            border-radius: 8px;
+            font-size: 14px;
+            outline: none;
+            transition: 0.3s;
+        }
+
+        input:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1);
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            background: var(--dark);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-weight: bold;
+            font-size: 16px;
+            cursor: pointer;
+            transition: 0.3s;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            background: #0b6e54;
+            transform: translateY(-1px);
+        }
+
+        .alert-sucesso {
+            background: #d1fae5;
+            color: #065f46;
+            padding: 10px;
+            border-radius: 6px;
+            margin-bottom: 15px;
+            font-size: 13px;
+            text-align: center;
+            border: 1px solid var(--primary);
+        }
+
+        .footer-link {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 14px;
+            color: #64748b;
+        }
+
+        .footer-link a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: bold;
+        }
+    </style>
+    <div class="container">
+        <div class="brand-header">
+            <i class="fas fa-wallet"></i>
+            <h2>Meu Real</h2>
+            <p style="font-size: 14px; color: #64748b;">Faça login para gerenciar suas finanças</p>
+        </div>
+
+        <?php if (isset($_GET['msg']) && $_GET['msg'] == 'sucesso'): ?>
+            <div class="alert-sucesso">
+                <i class="fas fa-check-circle"></i> Conta criada! Pode logar agora.
+            </div>
+        <?php endif; ?>
+
+        <form action="processa_login.php" method="POST">
+            <div class="form-group">
+                <label>E-mail</label>
+                <input type="email" name="email" required placeholder="Digite seu e-mail">
+            </div>
+            <div class="form-group">
+                <label>Senha</label>
+                <input type="password" name="senha" required placeholder="Digite sua senha">
+            </div>
+            <div style="text-align: right; margin-bottom: 15px;">
+                <a href="esqueci_senha.php" style="font-size: 12px; color: #64748b; text-decoration: none;">Esqueceu a senha?</a>
+            </div>
+            <button type="submit">ENTRAR</button>
+        </form>
+
+        <div class="footer-link">
+            Ainda não tem conta? <a href="cadastro.php">Criar agora</a>
+        </div>
+    </div>
+
+
+
+    </body>
+
+</html>
