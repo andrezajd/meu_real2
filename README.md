@@ -29,4 +29,19 @@ Sistema de gestão financeira pessoal leve, seguro e portátil, desenvolvido par
 * **Banco de Dados:** MySQL gerenciado via HeidiSQL.
 * **Frontend:** HTML5, CSS3 e FontAwesome 6.
 
+* ##  Como Rodar o Projeto
+1. Baixe o **Laragon Portable**.
+2. Coloque a pasta do projeto em laragon/www/.
+3. Importe o arquivo database_setup.sql no seu MySQL via HeidiSQL.
+4. Acesse localhost/nome-da-sua-pasta.
+   
+<img width="1918" height="867" alt="tela_useradmin" src="https://github.com/user-attachments/assets/c777ea1a-b301-4aae-b2a8-a79a37fc208d" />
+
+<img width="1890" height="850" alt="tela_user" src="https://github.com/user-attachments/assets/e8f76453-2108-4276-8982-7568c84258aa" />
+
+<img width="1902" height="881" alt="tela_admin" src="https://github.com/user-attachments/assets/f4a97718-be42-4f6c-96c0-b5962465458f" />
+
+
+* > **Aviso de Autoria:** Todo o histórico de desenvolvimento e lógica de segurança foi registrado originalmente por Andreza Pires via GitHub Commits
+
 ---
