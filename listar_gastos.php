@@ -13,32 +13,7 @@ $resultado = $conn->query($sql);
 <head>
     <meta charset="UTF-8">
     <title>Meus Gastos</title>
-    <style>
-        table {
-            width: 80%;
-            border-collapse: collapse;
-            margin: 20px auto;
-        }
-
-        th,
-        td {
-            border: 1px solid #ddd;
-            padding: 10px;
-            text-align: left;
-        }
-
-        th {
-            background-color: #f4f4f4;
-        }
-
-        .receita {
-            color: green;
-        }
-
-        .despesa {
-            color: red;
-        }
-    </style>
+    <link rel="stylesheet" href="styles/listar_gastos.css">
 </head>
 
 <body>

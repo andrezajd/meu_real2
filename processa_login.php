@@ -34,7 +34,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $_SESSION['nivel_acesso'] = $usuario['nivel_acesso'];
 
             // Sucesso! Vai para o index
-            header("Location: /meu_real2/index.php");
+            header("Location: index.php");
             exit();
         } else {
             // Senha não bateu com o hash

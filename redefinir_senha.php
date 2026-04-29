@@ -18,51 +18,8 @@ if (!$usuario) {
     <meta charset="UTF-8">
     <title>Nova Senha - Meu Real</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <style>
-        /* Use o mesmo estilo CSS do seu Login/Cadastro que criamos antes */
-        :root {
-            --primary: #10b981;
-            --dark: #064e3b;
-            --bg: #f1f5f9;
-        }
-
-        body {
-            background: var(--bg);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            min-height: 100vh;
-            font-family: 'Segoe UI', sans-serif;
-        }
-
-        .container {
-            background: white;
-            padding: 30px;
-            border-radius: 12px;
-            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
-            width: 350px;
-        }
-
-        input {
-            width: 100%;
-            padding: 12px;
-            border: 1px solid #cbd5e1;
-            border-radius: 8px;
-            margin-bottom: 15px;
-            box-sizing: border-box;
-        }
-
-        button {
-            width: 100%;
-            padding: 12px;
-            background: var(--dark);
-            color: white;
-            border: none;
-            border-radius: 8px;
-            font-weight: bold;
-            cursor: pointer;
-        }
-    </style>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/redefinir_senha.css">
 </head>
 
 <body>

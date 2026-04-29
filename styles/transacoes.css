@@ -1,0 +1,41 @@
+.card-tabela {
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+h2 {
+    margin-bottom: 20px;
+    color: #1e293b;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th {
+    text-align: left;
+    padding: 15px;
+    color: #64748b;
+    border-bottom: 2px solid #f1f5f9;
+    text-transform: uppercase;
+    font-size: 12px;
+}
+
+td {
+    padding: 15px;
+    border-bottom: 1px solid #f1f5f9;
+    color: #334155;
+}
+
+.valor-entrada {
+    color: #10b981;
+    font-weight: bold;
+}
+
+.valor-saida {
+    color: #be123c;
+    font-weight: bold;
+}
