@@ -1,8 +1,8 @@
 <?php
 
-$host = "127.0.0.1"; // Pode usar localhost também
+$host = "127.0.0.1"; 
 $usuario = "root";
-$senha = "";     // VOCÊ PRECISA DESSA SENHA AQUI
+$senha = "";     
 $banco = "controle_de_gastos";
 
 

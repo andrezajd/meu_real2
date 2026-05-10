@@ -16,8 +16,15 @@ $id_usuario   = $conn->real_escape_string($_SESSION['usuario_id']);
 $nome_usuario = $conn->real_escape_string($_SESSION['usuario_nome']);
 
 // BUSCA AMPLIADA: Sem o LIMIT 5 para mostrar tudo
-$lista = $conn->query("SELECT * FROM transacoes WHERE usuario_id = '$id_usuario' ORDER BY data DESC");
-?>
+// $lista = $conn->query("SELECT * FROM transacoes WHERE usuario_id = '$id_usuario' ORDER BY data DESC");
+// 
+$lista = $conn->query("
+SELECT * FROM transacoes 
+WHERE usuario_id = '$id_usuario'
+AND MONTH(data)=MONTH(CURRENT_DATE())
+AND YEAR(data)=YEAR(CURRENT_DATE())
+ORDER BY data DESC
+"); ?>
 
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -26,109 +33,9 @@ $lista = $conn->query("SELECT * FROM transacoes WHERE usuario_id = '$id_usuario'
     <meta charset="UTF-8">
     <title>Meu Real - Extrato Completo</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <style>
-        /* Reutilizando o CSS do Index */
-        :root {
-            --primary: #10b981;
-            --bg: #f0fdf4;
-            --sidebar-bg: #064e3b;
-        }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', sans-serif;
-        }
-
-        body {
-            display: flex;
-            background: var(--bg);
-            min-height: 100vh;
-        }
-
-        .sidebar {
-            width: 230px;
-            background: var(--sidebar-bg);
-            color: white;
-            padding: 15px;
-            position: fixed;
-            height: 100%;
-        }
-
-        .brand {
-            font-size: 22px;
-            font-weight: bold;
-            margin-bottom: 30px;
-            color: #ffffff;
-            text-align: center;
-            padding: 10px 0;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .sidebar nav a {
-            color: #cbd5e1;
-            text-decoration: none;
-            padding: 12px;
-            display: block;
-            border-radius: 6px;
-            margin-bottom: 5px;
-            font-size: 14px;
-        }
-
-        .sidebar nav a:hover {
-            background: rgba(255, 255, 255, 0.1);
-            color: white;
-        }
-
-        .main {
-            margin-left: 230px;
-            flex: 1;
-            padding: 40px;
-        }
-
-        .card-tabela {
-            background: white;
-            padding: 30px;
-            border-radius: 12px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-        }
-
-        h2 {
-            margin-bottom: 20px;
-            color: #1e293b;
-        }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-
-        th {
-            text-align: left;
-            padding: 15px;
-            color: #64748b;
-            border-bottom: 2px solid #f1f5f9;
-            text-transform: uppercase;
-            font-size: 12px;
-        }
-
-        td {
-            padding: 15px;
-            border-bottom: 1px solid #f1f5f9;
-            color: #334155;
-        }
-
-        .valor-entrada {
-            color: #10b981;
-            font-weight: bold;
-        }
-
-        .valor-saida {
-            color: #be123c;
-            font-weight: bold;
-        }
-    </style>
+      <link rel="stylesheet" href="css/transacoes.css">
+    
 </head>
 
 <body>
@@ -158,7 +65,35 @@ $lista = $conn->query("SELECT * FROM transacoes WHERE usuario_id = '$id_usuario'
                 </thead>
                 <tbody>
                     <?php while ($row = $lista->fetch_assoc()): ?>
-                        <?php $classeCor = ($row['categoria'] == 'Saldo') ? 'valor-entrada' : 'valor-saida'; ?>
+                        <!-- <?php $classeCor = ($row['categoria'] == 'Saldo') ? 'valor-entrada' : 'valor-saida'; ?> -->
+                        <?php
+
+                        $classeCor = '';
+
+                        switch ($row['categoria']) {
+
+                            case 'Saldo':
+                                $classeCor = 'valor-entrada';
+                                break;
+
+                            case 'Gastos':
+                                $classeCor = 'valor-saida';
+                                break;
+
+                            case 'Cartão':
+                                $classeCor = 'valor-cartao';
+                                break;
+
+                            case 'Meta':
+                                $classeCor = 'valor-meta';
+                                break;
+
+                            default:
+                                $classeCor = 'valor-saida';
+                                break;
+                        }
+
+                        ?>
                         <tr>
                             <td><?php echo date('d/m/Y', strtotime($row['data'])); ?></td>
                             <td><strong><?php echo $row['descricao']; ?></strong></td>
