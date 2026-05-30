@@ -1,4 +1,5 @@
-# meu_real2
+# meu_real2<img width="1921" height="1370" alt="Meu Real - Dashboard novo" src="https://github.com/user-attachments/assets/b85316de-2dfe-4802-a1a0-e8c2b345f5f3" />
+
 Site para controle de gastos pessoal.
 
 #  Projeto Meu Real
@@ -44,7 +45,7 @@ Sistema de gestão financeira pessoal leve, seguro e portátil, desenvolvido par
 3. Importe o arquivo database_setup.sql no seu MySQL via HeidiSQL.
 4. Acesse localhost/nome-da-sua-pasta.
    
-![alt text](<Meu Real - Dashboard novo.png>)
+
 
 ==========================================================================================
 
@@ -90,7 +91,7 @@ php
     </option>
 <?php else: ?>
     <option value="Cartão">
-        💳 Cartão (Disponível: R$ <?php echo $limiteDisponivel; ?>)
+         Cartão (Disponível: R$ <?php echo $limiteDisponivel; ?>)
     </option>
 <?php endif; ?>
 
