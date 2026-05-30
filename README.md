@@ -5,6 +5,15 @@ Site para controle de gastos pessoal.
 
 Sistema de gestão financeira pessoal leve, seguro e portátil, desenvolvido para facilitar o controle de gastos e a organização financeira do utilizador comum.
 
+
+
+<img width="1921" height="1604" alt="MeuReal" src="https://github.com/user-attachments/assets/a8893791-9195-4728-bac1-b9d7502339d0" />
+
+<img width="1921" height="1111" alt="MeuReal - Extrato Completo" src="https://github.com/user-attachments/assets/3500eb8a-214c-4e1e-be39-d7c99e2b0d35" />
+
+<img width="1921" height="1500" alt="MeuReal - Meu Perfil" src="https://github.com/user-attachments/assets/9810c8df-e16d-4bed-99d8-f4fdddefc35e" />
+
+
 ---
 
 ##  Segurança e Autenticação
