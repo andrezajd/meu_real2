@@ -2,77 +2,91 @@
 session_start();
 require_once __DIR__ . '/conexao.php';
 
-// Verifica login
 if (!isset($_SESSION['usuario_id'])) {
     header("Location: login.php");
     exit();
 }
 
-$id_usuario = $conn->real_escape_string($_SESSION['usuario_id']);
+$usuario_id = $_SESSION['usuario_id'];
+$descricao = trim($_POST['descricao']);
+$valor = (float) str_replace(',', '.', $_POST['valor']);
+$categoria = $_POST['categoria'];
+$data_raw = $_POST['data'];
 
-$descricao = $conn->real_escape_string($_POST['descricao']);
+// Converte data para formato MySQL
+$data = str_replace('T', ' ', $data_raw) . ':00';
 
-$valor = $conn->real_escape_string($_POST['valor']);
-
-$categoria = $conn->real_escape_string($_POST['categoria']);
-
-$data = $conn->real_escape_string($_POST['data']);
-
-// BUSCA CONFIGURAÇÕES DO CARTÃO
-$dadosUsuario = $conn->query("
-    SELECT fechamento_cartao
-    FROM usuarios
-    WHERE id = '$id_usuario'
-")->fetch_assoc();
-
-$fechamento = (int)$dadosUsuario['fechamento_cartao'];
-
-// DATA DA COMPRA
-$dataCompra = new DateTime($data);
-
-$diaCompra = (int)$dataCompra->format('d');
-
-// DEFINE A FATURA
-if ($categoria == 'Cartão') {
-
-    // Se comprou depois do fechamento
-    // joga pra próxima fatura
-    if ($diaCompra > $fechamento) {
-
-        $dataCompra->modify('+1 month');
-    }
-
-    $fatura_mes = $dataCompra->format('Y-m');
-
-} else {
-
-    $fatura_mes = null;
-}
-
-// INSERT
-$sql = "
-INSERT INTO transacoes
-(usuario_id, descricao, valor, categoria, data, fatura_mes)
-
-VALUES
-(
-'$id_usuario',
-'$descricao',
-'$valor',
-'$categoria',
-'$data',
-" . ($fatura_mes ? "'$fatura_mes'" : "NULL") . "
-)
+// ========== BUSCAR TOTAIS DO MÊS ==========
+$sql_totais = "
+    SELECT 
+        SUM(CASE WHEN categoria = 'Saldo' THEN valor ELSE 0 END) as entradas,
+        SUM(CASE WHEN categoria = 'Gastos' THEN valor ELSE 0 END) as gastos_debito,
+        SUM(CASE WHEN categoria = 'Cartão' THEN valor ELSE 0 END) as gastos_cartao,
+        SUM(CASE WHEN categoria = 'Meta' THEN valor ELSE 0 END) as reserva
+    FROM transacoes
+    WHERE usuario_id = ?
+      AND MONTH(data) = MONTH(CURRENT_DATE())
+      AND YEAR(data) = YEAR(CURRENT_DATE())
 ";
+$stmt_totais = $conn->prepare($sql_totais);
+$stmt_totais->bind_param("i", $usuario_id);
+$stmt_totais->execute();
+$totais = $stmt_totais->get_result()->fetch_assoc();
+$stmt_totais->close();
 
-// SALVA
-if ($conn->query($sql)) {
+$entradas      = (float) $totais['entradas'];
+$gastosDebito  = (float) $totais['gastos_debito'];
+$gastosCartao  = (float) $totais['gastos_cartao'];
+$reserva       = (float) $totais['reserva'];
 
-    header("Location: index.php?sucesso=1");
-    exit();
+// Cálculo do saldo disponível para débito (dinheiro real na conta)
+$saldoDebito = $entradas - $gastosDebito;
+$disponivelDebito = $saldoDebito - $reserva;   // o que pode gastar à vista sem comprometer reserva
 
-} else {
+// ========== VALIDAÇÃO POR CATEGORIA ==========
 
-    echo 'Erro ao salvar: ' . $conn->error;
+// 1) Gastos à vista (Débito)
+if ($categoria == 'Gastos') {
+    if ($valor > $disponivelDebito) {
+        $_SESSION['erro'] = "❌ Saldo insuficiente para gasto à vista. Disponível (após reserva): R$ " . number_format($disponivelDebito,2,',','.');
+        header("Location: index.php");
+        exit;
+    }
 }
+
+// 2) Cartão de Crédito - valida apenas limite do cartão (não afeta saldo de débito)
+if ($categoria == 'Cartão') {
+    // Buscar limite do cartão do usuário
+    $sql_limite = "SELECT limite_cartao FROM usuarios WHERE id = ?";
+    $stmt_limite = $conn->prepare($sql_limite);
+    $stmt_limite->bind_param("i", $usuario_id);
+    $stmt_limite->execute();
+    $limite = (float) $stmt_limite->get_result()->fetch_assoc()['limite_cartao'];
+    $stmt_limite->close();
+    
+    $novoTotalCartao = $gastosCartao + $valor;
+    if ($limite > 0 && $novoTotalCartao > $limite) {
+        $disponivel = $limite - $gastosCartao;
+        $_SESSION['erro'] = "❌ Limite do cartão excedido. Disponível: R$ " . number_format($disponivel,2,',','.');
+        header("Location: index.php");
+        exit;
+    }
+}
+
+// 3) Entradas (Saldo) e Meta (Reserva) - sempre permitem, sem validação extra
+
+// ========== INSERIR TRANSAÇÃO ==========
+$sql_insert = "INSERT INTO transacoes (usuario_id, descricao, valor, categoria, data) VALUES (?, ?, ?, ?, ?)";
+$stmt_insert = $conn->prepare($sql_insert);
+$stmt_insert->bind_param("isdss", $usuario_id, $descricao, $valor, $categoria, $data);
+
+if ($stmt_insert->execute()) {
+    $_SESSION['sucesso'] = "✅ Transação salva com sucesso!";
+} else {
+    $_SESSION['erro'] = "❌ Erro ao salvar: " . $stmt_insert->error;
+}
+$stmt_insert->close();
+
+header("Location: index.php");
+exit;
 ?>

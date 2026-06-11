@@ -2,7 +2,7 @@
 
 $host = "127.0.0.1"; 
 $usuario = "root";
-$senha = "";     
+$senha = "usbw";     
 $banco = "controle_de_gastos";
 
 
