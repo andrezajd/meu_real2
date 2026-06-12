@@ -64,6 +64,7 @@ if ($categoria == 'Cartão') {
     $limite = (float) $stmt_limite->get_result()->fetch_assoc()['limite_cartao'];
     $stmt_limite->close();
     
+    // Considera apenas gastos pendentes (não pagos) – já que $gastosCartao na consulta acima considera apenas pendentes (ajustado depois)
     $novoTotalCartao = $gastosCartao + $valor;
     if ($limite > 0 && $novoTotalCartao > $limite) {
         $disponivel = $limite - $gastosCartao;
@@ -76,7 +77,7 @@ if ($categoria == 'Cartão') {
 // 3) Entradas (Saldo) e Meta (Reserva) - sempre permitem, sem validação extra
 
 // ========== INSERIR TRANSAÇÃO ==========
-$sql_insert = "INSERT INTO transacoes (usuario_id, descricao, valor, categoria, data) VALUES (?, ?, ?, ?, ?)";
+$sql_insert = "INSERT INTO transacoes (usuario_id, descricao, valor, categoria, data, status) VALUES (?, ?, ?, ?, ?, 'pendente')";
 $stmt_insert = $conn->prepare($sql_insert);
 $stmt_insert->bind_param("isdss", $usuario_id, $descricao, $valor, $categoria, $data);
 

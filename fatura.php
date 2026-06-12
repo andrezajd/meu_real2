@@ -70,9 +70,7 @@ $stmt->close();
 <body>
 
 <aside class="sidebar">
-    <div class="brand">
-        <i class="fas fa-piggy-bank"></i> Meu Real
-    </div>
+    <div class="brand"><i class="fas fa-piggy-bank"></i> Meu Real</div>
     <nav>
         <a href="index.php"><i class="fas fa-home"></i> Início</a>
         <a href="transacoes.php"><i class="fas fa-exchange-alt"></i> Transações</a>
@@ -92,7 +90,6 @@ $stmt->close();
             <span><?php echo date('d/m/Y'); ?></span>
         </header>
 
-        <!-- Cards de informação -->
         <div class="info-cards">
             <div class="info-card">
                 <h3><i class="fas fa-chart-line"></i> Limite Total</h3>
@@ -112,7 +109,6 @@ $stmt->close();
             </div>
         </div>
 
-        <!-- Fatura atual -->
         <div class="fatura-card">
             <div class="fatura-header">
                 <span class="fatura-mes">
@@ -126,54 +122,38 @@ $stmt->close();
             <?php if ($totalFaturaAtual > 0): ?>
                 <form method="POST" action="pagar_fatura.php" onsubmit="return confirm('Pagar fatura de R$ <?php echo number_format($totalFaturaAtual, 2, ',', '.'); ?>?')">
                     <input type="hidden" name="mes" value="<?php echo $mesAtual; ?>">
-                    <button type="submit" class="btn-pagar">
-                        <i class="fas fa-check-circle"></i> Pagar Fatura
-                    </button>
+                    <button type="submit" class="btn-pagar"><i class="fas fa-check-circle"></i> Pagar Fatura</button>
                 </form>
             <?php else: ?>
                 <p style="color: #10b981; margin-top: 10px;">✓ Nenhum gasto pendente no cartão este mês</p>
             <?php endif; ?>
         </div>
 
-        <!-- Histórico de faturas pendentes -->
         <h3 style="margin: 30px 0 15px 0;"><i class="fas fa-history"></i> Faturas Pendentes (Meses Anteriores)</h3>
-        
         <?php if (count($faturas) > 0): ?>
             <?php foreach ($faturas as $fatura): 
-                // Exibe apenas se não for o mês atual (já mostrado acima)
                 if ($fatura['mes'] == $mesAtual) continue;
             ?>
                 <div class="fatura-card">
                     <div class="fatura-header">
-                        <span class="fatura-mes">
-                            <i class="fas fa-calendar"></i> 
-                            <?php echo date('F/Y', strtotime($fatura['mes'] . '-01')); ?>
-                        </span>
+                        <span class="fatura-mes"><i class="fas fa-calendar"></i> <?php echo date('F/Y', strtotime($fatura['mes'] . '-01')); ?></span>
                         <span class="status-pendente">PENDENTE</span>
                     </div>
-                    <div class="fatura-total">
-                        R$ <?php echo number_format($fatura['total'], 2, ',', '.'); ?>
-                    </div>
+                    <div class="fatura-total">R$ <?php echo number_format($fatura['total'], 2, ',', '.'); ?></div>
                     <form method="POST" action="pagar_fatura.php" style="margin-top: 10px;" onsubmit="return confirm('Pagar fatura de R$ <?php echo number_format($fatura['total'], 2, ',', '.'); ?>?')">
                         <input type="hidden" name="mes" value="<?php echo $fatura['mes']; ?>">
-                        <button type="submit" class="btn-pagar" style="background: #2563eb;">
-                            <i class="fas fa-check-circle"></i> Pagar esta fatura
-                        </button>
+                        <button type="submit" class="btn-pagar" style="background: #2563eb;"><i class="fas fa-check-circle"></i> Pagar esta fatura</button>
                     </form>
                     <small><?php echo $fatura['qtd']; ?> transações</small>
                 </div>
             <?php endforeach; ?>
-            <?php if (count(array_filter($faturas, fn($f) => $f['mes'] != $mesAtual)) == 0): ?>
-                <p style="text-align: center; color: #64748b;">Nenhuma fatura pendente de meses anteriores</p>
-            <?php endif; ?>
         <?php else: ?>
-            <p style="text-align: center; color: #64748b;">Nenhuma fatura pendente encontrada</p>
+            <p style="text-align: center; color: #64748b;">Nenhuma fatura pendente de meses anteriores</p>
         <?php endif; ?>
     </div>
 </main>
 
 <style>
-    /* Adicione estilos básicos se não tiver no CSS */
     .info-cards { display: flex; gap: 20px; margin-bottom: 30px; flex-wrap: wrap; }
     .info-card { background: #fff; border-radius: 12px; padding: 20px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); flex: 1; min-width: 150px; text-align: center; }
     .info-card h3 { font-size: 14px; color: #64748b; margin-bottom: 10px; }
