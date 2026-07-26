@@ -1,6 +1,6 @@
 {
-  "versao_minima": 3,
-  "versao_atual": 3,
+  "versao_minima": 4,
+  "versao_atual": 4,
   "atualizacao_obrigatoria": true,
   "mensagem": "Esta versão do MeuReal ficou obsoleta. Atualize para continuar.",
   "url_play_store": "https://play.google.com/store/apps/details?id=com.andrezajd.meureal"
