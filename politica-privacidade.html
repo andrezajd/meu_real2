@@ -1,0 +1,523 @@
+<?php
+declare(strict_types=1);
+
+$anoAtual = date('Y');
+$ultimaAtualizacao = '1º de agosto de 2026';
+$emailSuporte = 'meureal2026@gmail.com';
+$desenvolvedora = 'Andreza Pires Alves Da Cunha';
+$siteOficial = 'https://meureal.app.br';
+?>
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Política de Privacidade do aplicativo MeuReal">
+    <title>Política de Privacidade — MeuReal</title>
+
+    <style>
+        :root {
+            --fundo: #F4F6F9;
+            --card: #FFFFFF;
+            --texto: #1F2D2F;
+            --texto-secundario: #5F6F72;
+            --primaria: #1A535C;
+            --destaque: #5C8001;
+            --borda: #DDE5E7;
+            --aviso: #FC9E4F;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0;
+            background: var(--fundo);
+            color: var(--texto);
+            font-family: Arial, Helvetica, sans-serif;
+            line-height: 1.65;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 920px;
+            margin: 0 auto;
+            padding: 24px 16px 48px;
+        }
+
+        .topo,
+        .secao {
+            background: var(--card);
+            border: 1px solid var(--borda);
+            border-radius: 18px;
+            padding: 22px;
+            margin-bottom: 16px;
+        }
+
+        h1 {
+            margin: 0 0 8px;
+            color: var(--primaria);
+            font-size: 30px;
+        }
+
+        h2 {
+            margin-top: 0;
+            color: var(--primaria);
+            font-size: 22px;
+        }
+
+        p {
+            margin: 8px 0 14px;
+        }
+
+        ul {
+            padding-left: 22px;
+        }
+
+        li {
+            margin: 7px 0;
+        }
+
+        .data {
+            color: var(--texto-secundario);
+            margin: 0;
+        }
+
+        .destaque {
+            border-left: 4px solid var(--destaque);
+            background: #F2F7E7;
+            padding: 14px;
+            border-radius: 10px;
+            margin: 14px 0;
+        }
+
+        .aviso {
+            border-left: 4px solid var(--aviso);
+            background: #FFF6ED;
+            padding: 14px;
+            border-radius: 10px;
+            margin: 14px 0;
+        }
+
+        a {
+            color: var(--primaria);
+            overflow-wrap: anywhere;
+        }
+
+        .rodape {
+            text-align: center;
+            color: var(--texto-secundario);
+            font-size: 13px;
+            padding-top: 14px;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 16px 12px 36px;
+            }
+
+            .topo,
+            .secao {
+                padding: 17px;
+            }
+
+            h1 {
+                font-size: 26px;
+            }
+
+            h2 {
+                font-size: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+<div class="container">
+
+    <header class="topo">
+        <h1>Política de Privacidade — MeuReal</h1>
+        <p class="data">
+            <strong>Última atualização:</strong>
+            <?= htmlspecialchars($ultimaAtualizacao, ENT_QUOTES, 'UTF-8') ?>
+        </p>
+
+        <p>
+            A sua privacidade é importante para nós. Esta Política de Privacidade
+            explica como o aplicativo <strong>MeuReal</strong> utiliza, armazena e
+            protege as informações relacionadas ao uso do aplicativo.
+        </p>
+    </header>
+
+    <section class="secao">
+        <h2>1. Sobre o aplicativo</h2>
+
+        <p>
+            O MeuReal é um aplicativo de controle financeiro pessoal que funciona
+            como uma planilha financeira pronta para uso.
+        </p>
+
+        <p>O aplicativo permite registrar e acompanhar:</p>
+
+        <ul>
+            <li>receitas e despesas;</li>
+            <li>saldo disponível;</li>
+            <li>reservas e resgates;</li>
+            <li>cartões de crédito;</li>
+            <li>faturas;</li>
+            <li>compras parceladas;</li>
+            <li>balanços mensais e anuais;</li>
+            <li>gráficos financeiros;</li>
+            <li>backups protegidos por senha.</li>
+        </ul>
+    </section>
+
+    <section class="secao">
+        <h2>2. Dados utilizados pelo aplicativo</h2>
+
+        <p>
+            O MeuReal pode utilizar informações fornecidas diretamente pelo usuário,
+            incluindo:
+        </p>
+
+        <ul>
+            <li>nome;</li>
+            <li>endereço de e-mail;</li>
+            <li>senha cadastrada no aplicativo;</li>
+            <li>receitas e despesas;</li>
+            <li>valores reservados e resgatados;</li>
+            <li>descrições e datas de lançamentos;</li>
+            <li>informações de cartões cadastradas manualmente;</li>
+            <li>limite, fechamento e vencimento do cartão;</li>
+            <li>informações sobre faturas e compras parceladas;</li>
+            <li>preferências e configurações do aplicativo.</li>
+        </ul>
+
+        <div class="aviso">
+            O aplicativo não solicita número completo do cartão, código de segurança,
+            senha bancária ou dados de acesso a instituições financeiras.
+        </div>
+    </section>
+
+    <section class="secao">
+        <h2>3. Endereço de e-mail</h2>
+
+        <p>O endereço de e-mail é coletado para:</p>
+
+        <ul>
+            <li>identificar a conta do usuário;</li>
+            <li>permitir cadastro e login;</li>
+            <li>associar os dados financeiros ao usuário correto;</li>
+            <li>auxiliar nos recursos de autenticação;</li>
+            <li>identificar o usuário em backups e restaurações.</li>
+        </ul>
+
+        <div class="destaque">
+            O endereço de e-mail não é vendido, não é utilizado para publicidade,
+            não é compartilhado com anunciantes e não é disponibilizado publicamente.
+        </div>
+    </section>
+
+    <section class="secao">
+        <h2>4. Senha e autenticação</h2>
+
+        <p>
+            A senha cadastrada é utilizada para proteger o acesso à conta do usuário.
+        </p>
+
+        <p>Quando disponível, o aplicativo também pode permitir autenticação por:</p>
+
+        <ul>
+            <li>biometria;</li>
+            <li>PIN do dispositivo;</li>
+            <li>padrão de desbloqueio;</li>
+            <li>senha do aparelho.</li>
+        </ul>
+
+        <p>
+            A autenticação biométrica e a credencial do dispositivo são processadas
+            pelo sistema Android. O MeuReal não recebe nem armazena impressões digitais,
+            dados faciais, PIN, padrão ou senha de desbloqueio do aparelho.
+        </p>
+    </section>
+
+    <section class="secao">
+        <h2>5. Dados financeiros</h2>
+
+        <p>
+            As informações financeiras são inseridas manualmente pelo próprio usuário.
+        </p>
+
+        <p>Essas informações podem incluir:</p>
+
+        <ul>
+            <li>valores recebidos;</li>
+            <li>gastos;</li>
+            <li>reservas;</li>
+            <li>resgates;</li>
+            <li>cartões;</li>
+            <li>faturas;</li>
+            <li>compras parceladas;</li>
+            <li>juros;</li>
+            <li>datas;</li>
+            <li>descrições;</li>
+            <li>categorias financeiras.</li>
+        </ul>
+
+        <p>
+            O MeuReal não acessa automaticamente contas bancárias e não realiza
+            movimentações financeiras.
+        </p>
+    </section>
+
+    <section class="secao">
+        <h2>6. Armazenamento dos dados</h2>
+
+        <p>
+            Os dados do MeuReal são armazenados localmente no dispositivo do usuário,
+            conforme o funcionamento atual do aplicativo.
+        </p>
+
+        <p>Isso inclui:</p>
+
+        <ul>
+            <li>dados da conta;</li>
+            <li>lançamentos financeiros;</li>
+            <li>cartões cadastrados;</li>
+            <li>faturas;</li>
+            <li>parcelas;</li>
+            <li>preferências;</li>
+            <li>configurações.</li>
+        </ul>
+
+        <div class="aviso">
+            A remoção do aplicativo ou a limpeza dos dados do aparelho pode apagar
+            essas informações caso o usuário não tenha criado um backup.
+        </div>
+    </section>
+
+    <section class="secao">
+        <h2>7. Backup e restauração</h2>
+
+        <p>
+            O MeuReal permite criar arquivos de backup protegidos por senha.
+        </p>
+
+        <p>O usuário é responsável por:</p>
+
+        <ul>
+            <li>escolher onde o arquivo será salvo;</li>
+            <li>guardar o arquivo em local seguro;</li>
+            <li>proteger a senha utilizada;</li>
+            <li>impedir o acesso de terceiros ao arquivo.</li>
+        </ul>
+
+        <p>
+            A restauração somente pode ser realizada com um arquivo válido e com a
+            senha correta.
+        </p>
+
+        <div class="aviso">
+            A senha do backup não pode ser recuperada pelo aplicativo caso seja esquecida.
+        </div>
+    </section>
+
+    <section class="secao">
+        <h2>8. Compartilhamento de dados</h2>
+
+        <p>
+            O MeuReal não vende, aluga ou comercializa dados pessoais.
+        </p>
+
+        <p>
+            O endereço de e-mail e os dados financeiros do usuário não são
+            compartilhados com terceiros para:
+        </p>
+
+        <ul>
+            <li>publicidade;</li>
+            <li>marketing;</li>
+            <li>criação de perfis comerciais;</li>
+            <li>venda de informações;</li>
+            <li>ofertas de produtos de terceiros.</li>
+        </ul>
+
+        <p>
+            Os dados somente poderão ser divulgados quando houver obrigação legal,
+            ordem judicial ou solicitação válida de autoridade competente.
+        </p>
+    </section>
+
+    <section class="secao">
+        <h2>9. Publicidade</h2>
+
+        <p>
+            Na versão atual, o aplicativo não utiliza os dados financeiros ou o
+            endereço de e-mail do usuário para personalização de anúncios.
+        </p>
+
+        <p>
+            Caso anúncios sejam adicionados futuramente, esta Política de Privacidade
+            e a declaração de Segurança dos dados da Google Play serão atualizadas
+            antes da disponibilização do recurso.
+        </p>
+    </section>
+
+    <section class="secao">
+        <h2>10. Permissões do dispositivo</h2>
+
+        <p>
+            O MeuReal pode utilizar recursos do Android necessários ao seu funcionamento,
+            como:
+        </p>
+
+        <ul>
+            <li>seletor de arquivos para criar ou restaurar backups;</li>
+            <li>autenticação biométrica;</li>
+            <li>credencial de segurança do dispositivo;</li>
+            <li>armazenamento interno do aplicativo.</li>
+        </ul>
+
+        <p>
+            O acesso a arquivos ocorre somente quando o próprio usuário escolhe um
+            arquivo ou um local para salvar o backup.
+        </p>
+
+        <div class="destaque">
+            O aplicativo não utiliza mais a câmera.
+        </div>
+    </section>
+
+    <section class="secao">
+        <h2>11. Segurança das informações</h2>
+
+        <p>
+            O MeuReal adota medidas para proteger as informações do usuário, incluindo:
+        </p>
+
+        <ul>
+            <li>autenticação por senha;</li>
+            <li>suporte à biometria;</li>
+            <li>confirmação da senha atual antes da alteração;</li>
+            <li>proteção do backup por senha;</li>
+            <li>separação dos dados de cada usuário;</li>
+            <li>controle de sessão;</li>
+            <li>restrição de recursos administrativos;</li>
+            <li>proteção contra alterações isoladas em compras parceladas.</li>
+        </ul>
+
+        <p>
+            Nenhum sistema é completamente imune a falhas. Por isso, o usuário também
+            deve proteger o aparelho, a senha da conta e os arquivos de backup.
+        </p>
+    </section>
+
+    <section class="secao">
+        <h2>12. Integridade de compras parceladas</h2>
+
+        <p>
+            Para evitar inconsistências financeiras, o aplicativo pode impedir a edição
+            individual de parcelas e oferecer a exclusão do conjunto completo relacionado
+            à compra.
+        </p>
+
+        <p>Essa medida busca preservar:</p>
+
+        <ul>
+            <li>o valor total da compra;</li>
+            <li>o cálculo das faturas;</li>
+            <li>o histórico financeiro;</li>
+            <li>o balanço mensal e anual.</li>
+        </ul>
+    </section>
+
+    <section class="secao">
+        <h2>13. Exclusão dos dados</h2>
+
+        <p>
+            O usuário pode excluir lançamentos e outras informações utilizando as opções
+            disponíveis no aplicativo.
+        </p>
+
+        <p>Para remover todos os dados locais, o usuário pode:</p>
+
+        <ul>
+            <li>utilizar uma opção de exclusão disponível no aplicativo, quando aplicável;</li>
+            <li>limpar os dados do aplicativo nas configurações do Android;</li>
+            <li>desinstalar o aplicativo.</li>
+        </ul>
+
+        <p>
+            Antes da exclusão, recomenda-se criar um backup caso o usuário deseje
+            recuperar as informações posteriormente.
+        </p>
+    </section>
+
+    <section class="secao">
+        <h2>14. Dados de crianças e adolescentes</h2>
+
+        <p>
+            O MeuReal não é direcionado especificamente a crianças.
+        </p>
+
+        <p>
+            O aplicativo não coleta intencionalmente informações de crianças para
+            publicidade, criação de perfil comercial ou venda de dados.
+        </p>
+    </section>
+
+    <section class="secao">
+        <h2>15. Alterações nesta política</h2>
+
+        <p>
+            Esta Política de Privacidade poderá ser atualizada para refletir:
+        </p>
+
+        <ul>
+            <li>novas funcionalidades;</li>
+            <li>mudanças de segurança;</li>
+            <li>alterações legais;</li>
+            <li>novos recursos;</li>
+            <li>modificações no tratamento de dados.</li>
+        </ul>
+
+        <p>
+            A data da última atualização será informada no início deste documento.
+        </p>
+    </section>
+
+    <section class="secao">
+        <h2>16. Contato</h2>
+
+        <p>
+            Em caso de dúvidas sobre esta Política de Privacidade ou sobre o tratamento
+            de dados no MeuReal, entre em contato:
+        </p>
+
+        <p>
+            <strong>Aplicativo:</strong> MeuReal<br>
+            <strong>Responsável:</strong> <?= htmlspecialchars($desenvolvedora, ENT_QUOTES, 'UTF-8') ?><br>
+            <strong>E-mail:</strong>
+            <a href="mailto:<?= htmlspecialchars($emailSuporte, ENT_QUOTES, 'UTF-8') ?>">
+                <?= htmlspecialchars($emailSuporte, ENT_QUOTES, 'UTF-8') ?>
+            </a><br>
+            <strong>Site:</strong>
+            <a href="<?= htmlspecialchars($siteOficial, ENT_QUOTES, 'UTF-8') ?>" target="_blank" rel="noopener noreferrer">
+                <?= htmlspecialchars($siteOficial, ENT_QUOTES, 'UTF-8') ?>
+            </a>
+        </p>
+    </section>
+
+    <footer class="rodape">
+        MeuReal — Política de Privacidade
+    </footer>
+
+</div>
+</body>
+</html>
