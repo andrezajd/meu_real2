@@ -1,0 +1,159 @@
+<?php
+declare(strict_types=1);
+?>
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Instruções para exclusão de conta e dados do aplicativo MeuReal">
+
+    <title>Exclusão de conta e dados — MeuReal</title>
+
+    <style>
+        :root {
+            --verde: #1A535C;
+            --fundo: #F4F6F9;
+            --branco: #FFFFFF;
+            --texto: #243436;
+            --cinza: #667477;
+            --borda: #DDE5E7;
+            --aviso: #FC9E4F;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 24px 16px;
+            background: var(--fundo);
+            color: var(--texto);
+            font-family: Arial, Helvetica, sans-serif;
+            line-height: 1.65;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 28px;
+            background: var(--branco);
+            border: 1px solid var(--borda);
+            border-radius: 18px;
+        }
+
+        h1,
+        h2 {
+            color: var(--verde);
+        }
+
+        h1 {
+            margin-top: 0;
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        .aviso {
+            margin: 20px 0;
+            padding: 16px;
+            background: #FFF6ED;
+            border-left: 4px solid var(--aviso);
+            border-radius: 8px;
+        }
+
+        .observacao {
+            color: var(--cinza);
+            font-size: 14px;
+        }
+
+        @media (max-width: 600px) {
+            body {
+                padding: 12px;
+            }
+
+            .container {
+                padding: 19px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<main class="container">
+
+    <h1>Exclusão de conta e dados — MeuReal</h1>
+
+    <p>
+        O MeuReal armazena os dados da conta e as informações financeiras
+        somente no dispositivo do usuário.
+    </p>
+
+    <div class="aviso">
+        O MeuReal não mantém contas ou dados financeiros em servidor remoto.
+        Por esse motivo, a exclusão deve ser realizada diretamente no aparelho
+        em que o aplicativo está instalado.
+    </div>
+
+    <h2>Dados que podem ser excluídos</h2>
+
+    <p>A exclusão dos dados locais remove:</p>
+
+    <ul>
+        <li>nome e endereço de e-mail cadastrados;</li>
+        <li>senha local do aplicativo;</li>
+        <li>receitas e despesas;</li>
+        <li>reservas e resgates;</li>
+        <li>cartões cadastrados;</li>
+        <li>faturas e compras parceladas;</li>
+        <li>preferências e configurações do aplicativo.</li>
+    </ul>
+
+    <h2>Como excluir os dados pelo Android</h2>
+
+    <ol>
+        <li>Abra as configurações do aparelho.</li>
+        <li>Acesse “Aplicativos”.</li>
+        <li>Procure e selecione “MeuReal”.</li>
+        <li>Entre em “Armazenamento”.</li>
+        <li>Toque em “Limpar dados” ou “Limpar armazenamento”.</li>
+        <li>Confirme a exclusão.</li>
+    </ol>
+
+    <p>
+        Esse procedimento remove a conta local e os dados financeiros armazenados
+        pelo MeuReal naquele aparelho.
+    </p>
+
+    <h2>Exclusão por desinstalação</h2>
+
+    <p>
+        O usuário também pode desinstalar o MeuReal. A desinstalação normalmente
+        remove os dados locais do aplicativo.
+    </p>
+
+    <h2>Arquivos de backup</h2>
+
+    <p>
+        Os arquivos de backup são criados e salvos em um local escolhido pelo
+        próprio usuário.
+    </p>
+
+    <p>
+        Esses arquivos não são armazenados nem controlados pelo MeuReal.
+        Para excluí-los, o usuário deve apagar manualmente o arquivo do aparelho,
+        cartão de memória ou serviço de armazenamento em nuvem em que foi salvo.
+    </p>
+
+    <p class="observacao">
+        Aplicativo MeuReal — dados armazenados localmente no dispositivo.
+    </p>
+
+</main>
+
+</body>
+</html>
